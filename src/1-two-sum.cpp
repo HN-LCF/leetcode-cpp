@@ -23,10 +23,11 @@
 
 using std::vector;
 using std::unordered_map;
+using std::sort;
 
 class TwoSum {
  public:
-  /*暴力枚举法*/
+  /*暴力穷举法*/
   vector<int> twoSum1(vector<int> &nums, int target) {
 	int n = nums.size();
 	for (int i = 0; i < n; ++i) {
@@ -51,6 +52,22 @@ class TwoSum {
 	  hashtable[nums[i]] = i;
 	}
 	return {};
+  }
+
+  /*排序后数组，双指针--条件较为苛刻*/
+  vector<int> twoSum3(vector<int> &nums, int target) {
+	sort(nums.begin(), nums.end());
+	int i = 0, j = nums.size() - 1, sum;
+	while (i < j) {
+	  sum = nums[i] + nums[j];
+	  if (sum == target)
+		break;
+	  if (sum < target)
+		++i;
+	  else
+		--j;
+	}
+	return vector<int>{i, j};
   }
 };
 
