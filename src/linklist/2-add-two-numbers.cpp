@@ -30,7 +30,7 @@ using std::sort;
 class AddTwoNumbers {
  public:
   /*老实人做法--错误--易导致溢出*/
-  ListNode *addTwoNumbers1(ListNode *l1, ListNode *l2) {
+  static ListNode *addTwoNumbers1(ListNode *l1, ListNode *l2) {
 	vector<int> t1, t2;
 	int n1, n2, sum;
 	n1 = n2 = 0;
@@ -62,7 +62,7 @@ class AddTwoNumbers {
   }
 
   /*为什么也有溢出*/
-  ListNode *addTwoNumbers2(ListNode *l1, ListNode *l2) {
+  static ListNode *addTwoNumbers2(ListNode *l1, ListNode *l2) {
 	int len1 = 1;    // 记录l1的长度
 	int len2 = 1;    // 记录l2的长度
 	ListNode *p = l1;
@@ -113,11 +113,11 @@ class AddTwoNumbers {
   }
 
   /*递归*/
-  ListNode *addTwoNumbers3(ListNode *l1, ListNode *l2) {
+  static ListNode *addTwoNumbers3(ListNode *l1, ListNode *l2) {
 	return dfs(l1, l2, 0);
   }
 
-  ListNode *dfs(ListNode *l, ListNode *r, int i) {
+  static ListNode *dfs(ListNode *l, ListNode *r, int i) {
 	if (!l && !r && !i) return nullptr;
 	int sum = (l ? l->val : 0) + (r ? r->val : 0) + i;
 	auto *node = new ListNode(sum % 10);
@@ -150,8 +150,8 @@ int main() {
   }
 
   cout << "-------------------------------\n";
-  AddTwoNumbers add_two_numbers;
-  auto l = add_two_numbers.addTwoNumbers3(a->next, b->next);
+
+  auto l = AddTwoNumbers::addTwoNumbers3(a->next, b->next);
   cout << "Output List:\n";
   while (l != nullptr) {
 	cout << l->val << "\t";

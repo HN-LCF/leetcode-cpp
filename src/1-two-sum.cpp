@@ -28,7 +28,7 @@ using std::sort;
 class TwoSum {
  public:
   /*暴力穷举法*/
-  vector<int> twoSum1(vector<int> &nums, int target) {
+  static vector<int> twoSum1(vector<int> &nums, int target) {
 	int n = nums.size();
 	for (int i = 0; i < n; ++i) {
 	  for (int j = i + 1; j < n; ++j) {
@@ -41,7 +41,7 @@ class TwoSum {
   }
 
   /*哈希表高效查找*/
-  vector<int> twoSum2(vector<int> &nums, int target) {
+  static vector<int> twoSum2(vector<int> &nums, int target) {
 	unordered_map<int, int> hashtable;
 	for (int i = 0; i < nums.size(); ++i) {
 	  auto it = hashtable.find(target - nums[i]);
@@ -55,7 +55,7 @@ class TwoSum {
   }
 
   /*排序后数组，双指针--条件较为苛刻*/
-  vector<int> twoSum3(vector<int> &nums, int target) {
+  static vector<int> twoSum3(vector<int> &nums, int target) {
 	sort(nums.begin(), nums.end());
 	int i = 0, j = nums.size() - 1, sum;
 	while (i < j) {
@@ -81,12 +81,11 @@ int main() {
   vector<int> num3 = {3, 3};
   int target3 = 6;
 
-  TwoSum two_sum;
   vector<int> num11, num22, num33;
 
-  num11 = two_sum.twoSum1(num1, target1);
-  num22 = two_sum.twoSum1(num2, target2);
-  num33 = two_sum.twoSum1(num3, target3);
+  num11 = TwoSum::twoSum1(num1, target1);
+  num22 = TwoSum::twoSum1(num2, target2);
+  num33 = TwoSum::twoSum1(num3, target3);
   for (auto num:num11) {
 	cout << num << "\t";
   }
@@ -102,9 +101,9 @@ int main() {
 
   cout << "---------------------------------------\n";
 
-  num11 = two_sum.twoSum2(num1, target1);
-  num22 = two_sum.twoSum2(num2, target2);
-  num33 = two_sum.twoSum2(num3, target3);
+  num11 = TwoSum::twoSum2(num1, target1);
+  num22 = TwoSum::twoSum2(num2, target2);
+  num33 = TwoSum::twoSum2(num3, target3);
   for (auto num:num11) {
 	cout << num << "\t";
   }

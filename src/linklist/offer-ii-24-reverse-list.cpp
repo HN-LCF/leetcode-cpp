@@ -23,7 +23,7 @@
 class ReverseList {
  public:
   /*迭代--原地翻转*/
-  ListNode *reverseList1(ListNode *head) {
+  static ListNode *reverseList1(ListNode *head) {
 	if (!head || !head->next)
 	  return head;
 	ListNode *pre = nullptr;
@@ -37,7 +37,7 @@ class ReverseList {
   }
 
   /*递归翻转*/
-  ListNode *reverseList2(ListNode *head) {
+  static ListNode *reverseList2(ListNode *head) {
 	if (!head || !head->next)
 	  return head;
 	ListNode *next = head->next;
@@ -62,8 +62,7 @@ int main() {
 	p = p->next;
   }
 
-  ReverseList reverse_list;
-  auto l = reverse_list.reverseList1(a->next);
+  auto l = ReverseList::reverseList1(a->next);
   while (l != nullptr) {
 	cout << l->val << "\n";
 	l = l->next;
