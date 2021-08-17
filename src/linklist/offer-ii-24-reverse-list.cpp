@@ -49,31 +49,23 @@ class ReverseList {
 };
 
 using std::cout;
+using std::cin;
 
 int main() {
-  cout << "Reverse List\n";
+  cout << "Input List:\n";
   auto *a = new ListNode;
-  auto *b = new ListNode;
-  auto *c = new ListNode;
-  auto *d = new ListNode;
-  auto *e = new ListNode;
-  a->val = 1;
-  b->val = 2;
-  c->val = 3;
-  d->val = 4;
-  e->val = 5;
-  a->next = b;
-  b->next = c;
-  c->next = d;
-  d->next = e;
-  e->next = nullptr;
+  auto p = a;
+  int value1 = 0;
 
-  ReverseList reverse_list;
-  auto t1 = reverse_list.reverseList1(a);
-  auto p = t1;
-  while (p != nullptr) {
-	cout << p->val << "\n";
+  while (cin >> value1) {
+	p->next = new ListNode(value1);
 	p = p->next;
   }
-//  auto t2=reverse_list.reverseList2(a);
+
+  ReverseList reverse_list;
+  auto l = reverse_list.reverseList1(a->next);
+  while (l != nullptr) {
+	cout << l->val << "\n";
+	l = l->next;
+  }
 }
