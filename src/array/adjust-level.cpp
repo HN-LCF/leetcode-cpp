@@ -11,19 +11,28 @@ using std::count;
 
 class AdjustLevel {
  public:
-  int adjustLevel(int cnt) {
-//	if (cnt <= 0)
-//	  return 0;
-//	vector<bool> allStatus(cnt, false);
-//	for (int i = 1; i < cnt; ++i) {
-//	  for (int j = 1; j <= cnt; ++j) {
-//		if (j % i == 0)
-//		  allStatus[j - 1] = !allStatus[j - 1];
-//	  }
-//	}
-//	allStatus[cnt - 1] = !allStatus[cnt - 1];
-//	return count(allStatus.begin(), allStatus.end(), true);
-	return sqrt(cnt);
+  /*
+   * 正确解
+   */
+  static int adjustLevel1(int cnt) {
+    return sqrt(cnt);
+  }
+
+  /*
+   * 错误解--未明白题目要点，超时
+   */
+  static int adjustLevel2(int cnt) {
+	if (cnt <= 0)
+	  return 0;
+	vector<bool> allStatus(cnt, false);
+	for (int i = 1; i < cnt; ++i) {
+	  for (int j = 1; j <= cnt; ++j) {
+		if (j % i == 0)
+		  allStatus[j - 1] = !allStatus[j - 1];
+	  }
+	}
+	allStatus[cnt - 1] = !allStatus[cnt - 1];
+	return count(allStatus.begin(), allStatus.end(), true);
   }
 };
 
@@ -32,12 +41,11 @@ using std::cin;
 
 int main() {
   int value = 99999;
-  AdjustLevel adjust_level;
 
   DWORD start, end;
   start = GetTickCount();
 
-  auto p = adjust_level.adjustLevel(value);
+  auto p = AdjustLevel::adjustLevel2(value);
   cout << "Input is: " << value << "\n" << "Output is: " << p << "\n";
 
   end = GetTickCount() - start;
