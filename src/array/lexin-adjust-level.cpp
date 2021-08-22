@@ -4,8 +4,10 @@
 /**
  * 乐鑫科技专场竞赛 2.
  */
+
 #include <bits/stdc++.h>
 #include <windows.h>
+
 using std::vector;
 using std::count;
 
@@ -15,7 +17,7 @@ class AdjustLevel {
    * 正确解
    */
   static int adjustLevel1(int cnt) {
-    return sqrt(cnt);
+	return floor(sqrt(cnt));
   }
 
   /*
@@ -32,7 +34,7 @@ class AdjustLevel {
 	  }
 	}
 	allStatus[cnt - 1] = !allStatus[cnt - 1];
-	return count(allStatus.begin(), allStatus.end(), true);
+	return static_cast<int>(count(allStatus.begin(), allStatus.end(), true));
   }
 };
 
@@ -45,7 +47,7 @@ int main() {
   DWORD start, end;
   start = GetTickCount();
 
-  auto p = AdjustLevel::adjustLevel2(value);
+  auto p = AdjustLevel::adjustLevel1(value);
   cout << "Input is: " << value << "\n" << "Output is: " << p << "\n";
 
   end = GetTickCount() - start;
