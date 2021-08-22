@@ -11,32 +11,32 @@ using std::to_string;
 class GetKthNum {
   using ll = long long;
  public:
-  static ll qpow(ll a, ll b) {
-	// 快速幂，求 a ^ b
-	ll ret = 1;
-	while (b) {
-	  if (b & 1)
-		ret = (ret * a);
-	  a = (a * a);
-	  b >>= 1;
+  static ll longPow(ll base, ll power) {
+	// 快速幂，求 base ^ power
+	ll result = 1;
+	while (power) {
+	  if (power & 1)
+		result = (result * base);
+	  base = (base * base);
+	  power >>= 1;
 	}
-	return ret;
+	return result;
   }
 
   static int getKthNum1(int k) {
 	int n;
 	for (n = 1; n < 9; n++) {
 	  // 当前 n 位数的全部长度
-	  ll curlen = qpow(10, n - 1) * 9 * n;
-	  if (curlen >= k)
+	  ll currentLength = longPow(10, n - 1) * 9 * n;
+	  if (currentLength >= k)
 		break;
-	  k -= curlen;
+	  k -= currentLength;
 	}
 
 	// 已知 n 位数和 k，求第几个数的第几位
 	ll q = (k + n - 1) / n, b = (k + n - 1) % n;
 	// 第 q 个数
-	ll num = qpow(10, n - 1) + q - 1;
+	ll num = longPow(10, n - 1) + q - 1;
 
 	string s = to_string(num);
 	return s[b] - '0';
@@ -58,7 +58,7 @@ class GetKthNum {
 using std::cout;
 
 int main() {
-  int value = 6;
+  int value = 20;
 
   DWORD start, end;
   start = GetTickCount();

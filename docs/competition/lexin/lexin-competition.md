@@ -79,7 +79,7 @@ public:
 class Solution {
     using ll = long long;
 public:
-    ll qpow(ll a, ll b) {
+    ll longPow(ll a, ll b) {
         // 快速幂，求 a ^ b
         ll ret = 1;
         while(b) {
@@ -94,7 +94,7 @@ public:
         int n;
         for(n = 1; n < 9; n++) {
             // 当前 n 位数的全部长度
-            ll curlen = qpow(10, n - 1) * 9 * n;
+            ll curlen = longPow(10, n - 1) * 9 * n;
             if(curlen >= k) break;
             k -= curlen;
         }
@@ -102,7 +102,7 @@ public:
         // 已知 n 位数和 k，求第几个数的第几位
         ll q = (k + n - 1) / n, b = (k + n - 1) % n;
         // 第 q 个数
-        ll num = qpow(10, n - 1) + q - 1;
+        ll num = longPow(10, n - 1) + q - 1;
         
         string s = to_string(num);
         return s[b] - '0';
