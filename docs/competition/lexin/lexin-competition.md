@@ -55,8 +55,3 @@ public:
 
 时间复杂度：$O(\sqrt(n))$
 
-$$
-\begin{equation}
-F(x)=1+1=2
-\end{equation}
-$$
