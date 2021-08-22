@@ -20,7 +20,7 @@
  * */
 
 #include <bits/stdc++.h>
-#include "../public/list_node.h"
+#include "../../public/list_node.h"
 
 using std::vector;
 using std::cout;

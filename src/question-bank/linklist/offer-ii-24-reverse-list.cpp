@@ -18,7 +18,7 @@
  * */
 
 #include <bits/stdc++.h>
-#include "../public/list_node.h"
+#include "../../public/list_node.h"
 
 class ReverseList {
  public:

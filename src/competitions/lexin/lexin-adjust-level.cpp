@@ -2,7 +2,8 @@
 // Created by HN-LCF on 2021/8/21.
 //
 /**
- * 乐鑫科技专场竞赛 2.
+ * 乐鑫科技专场竞赛 2. 调整电平
+ * 题目详见 `docs/competition/lexin/lexin-competition.md`
  */
 
 #include <bits/stdc++.h>
@@ -21,6 +22,7 @@ class AdjustLevel {
   }
 
   /*
+   * Disabled
    * 错误解--未明白题目要点，超时
    */
   static int adjustLevel2(int cnt) {
